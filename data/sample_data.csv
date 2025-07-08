@@ -1,0 +1,11 @@
+customer_id,age,annual_income,credit_score,loan_amount,employment_length,debt_to_income,credit_utilization,loan_purpose,home_ownership
+CUST_0001,35,75000,720,25000,5.0,0.25,0.20,debt_consolidation,RENT
+CUST_0002,42,95000,680,45000,3.5,0.35,0.45,home_improvement,MORTGAGE
+CUST_0003,28,120000,780,80000,8.0,0.20,0.15,major_purchase,OWN
+CUST_0004,55,35000,620,15000,1.5,0.45,0.60,car,RENT
+CUST_0005,31,85000,750,60000,6.0,0.30,0.25,medical,MORTGAGE
+CUST_0006,45,60000,690,30000,4.0,0.40,0.35,vacation,RENT
+CUST_0007,38,110000,740,50000,7.5,0.25,0.20,other,OWN
+CUST_0008,29,55000,650,20000,2.0,0.50,0.50,debt_consolidation,RENT
+CUST_0009,52,140000,800,75000,10.0,0.15,0.10,home_improvement,OWN
+CUST_0010,33,40000,580,12000,0.5,0.55,0.70,car,RENT
