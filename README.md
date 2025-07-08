@@ -212,7 +212,7 @@ Create a `.env` file in the root directory:
 ```env
 # Application Settings
 APP_NAME=CreditAnalyticsHub
-COMPANY_NAME=FinTech Solutions Inc.
+COMPANY_NAME=FinTech Solutions.
 VERSION=2.0.0
 ENVIRONMENT=production
 DEBUG=False
@@ -316,7 +316,7 @@ git push heroku main
 
 1. **Clone and setup**:
    ```bash
-   git clone https://github.com/your-org/creditanalyticshub.git
+   git clone https://github.com/MOHD-AFROZ-ALI/Credit-Analytics-Hub
    cd creditanalyticshub
    python -m venv venv
    source venv/bin/activate
@@ -482,7 +482,7 @@ We welcome contributions from the community! Please follow these guidelines:
 - Help others learn and grow
 - Maintain a professional environment
 
-## 📄 License
+<!-- ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
@@ -508,7 +508,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-```
+``` -->
 
 ## 📞 Support & Contact
 
@@ -519,7 +519,7 @@ SOFTWARE.
 - **Discussions**: Join community discussions on GitHub Discussions
 - **Email**: support@fintechsolutions.com
 
-### Enterprise Support
+<!-- ### Enterprise Support
 
 For enterprise customers, we offer:
 - Priority support and bug fixes
@@ -528,29 +528,29 @@ For enterprise customers, we offer:
 - SLA guarantees
 - Dedicated support channels
 
-Contact us at enterprise@fintechsolutions.com for more information.
+Contact us at enterprise@fintechsolutions.com for more information. -->
 
 ### Community
 
-- **GitHub**: [https://github.com/your-org/creditanalyticshub](https://github.com/your-org/creditanalyticshub)
-- **LinkedIn**: [FinTech Solutions Inc.](https://linkedin.com/company/fintechsolutions)
-- **Twitter**: [@FinTechSolutions](https://twitter.com/fintechsolutions)
+- **GitHub**: [https://github.com/MOHD-AFROZ-ALI/Credit-Analytics-Hub](https://github.com/your-org/creditanalyticshub)
+- **LinkedIn**: [FinTech Solutions](https://www.linkedin.com/in/mohd-afroz-ali/)
+
 
 ## 🎯 Roadmap
 
-### Version 2.1 (Q2 2024)
+### Version 2.1 (Q2 2025)
 - [ ] Advanced ensemble models (Stacking, Blending)
 - [ ] Real-time model monitoring and drift detection
 - [ ] Enhanced mobile responsiveness
 - [ ] API endpoints for external integrations
 
-### Version 2.2 (Q3 2024)
+### Version 2.2 (Q3 2025)
 - [ ] Multi-language support
 - [ ] Advanced visualization dashboard
 - [ ] Automated model retraining
 - [ ] Enhanced security features
 
-### Version 3.0 (Q4 2024)
+### Version 3.0 (Q4 2025)
 - [ ] Microservices architecture
 - [ ] Kubernetes deployment support
 - [ ] Advanced AI/ML capabilities
@@ -566,6 +566,6 @@ Contact us at enterprise@fintechsolutions.com for more information.
 
 ---
 
-**Built with ❤️ by the FinTech Solutions Team**
+**Built  by the MOHD AFROZ ALI**
 
 *Empowering financial institutions with advanced credit risk analytics and AI-driven insights.*
