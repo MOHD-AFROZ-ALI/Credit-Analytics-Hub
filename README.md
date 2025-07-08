@@ -517,7 +517,7 @@ SOFTWARE.
 - **Documentation**: Check this README and inline documentation
 - **Issues**: Report bugs and request features on GitHub Issues
 - **Discussions**: Join community discussions on GitHub Discussions
-- **Email**: support@fintechsolutions.com
+
 
 <!-- ### Enterprise Support
 
@@ -533,7 +533,7 @@ Contact us at enterprise@fintechsolutions.com for more information. -->
 ### Community
 
 - **GitHub**: [https://github.com/MOHD-AFROZ-ALI/Credit-Analytics-Hub](https://github.com/your-org/creditanalyticshub)
-- **LinkedIn**: [FinTech Solutions](https://www.linkedin.com/in/mohd-afroz-ali/)
+- **LinkedIn**: [MOHD AFROZ ALI](https://www.linkedin.com/in/mohd-afroz-ali/)
 
 
 ## 🎯 Roadmap
