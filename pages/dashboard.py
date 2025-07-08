@@ -61,7 +61,7 @@ def generate_sample_data():
     ]
 
     # Performance data
-    dates = pd.date_range(start='2024-07-01', end='2025-07-10', freq='D')
+    dates = pd.date_range(start='2025-01-01', end='2025-07-10', freq='W')
     performance_data = pd.DataFrame({
         'date': dates,
         'applications': np.random.poisson(500, len(dates)),

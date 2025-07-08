@@ -495,7 +495,7 @@ def main():
             <div class="card-content">
                 If you continue to experience issues, please contact our technical support team:
                 <br><br>
-                📧 Email: support@fintechsolutions.com<br>
+                📧 Email: creditsolutions<br>
                 📞 Phone: +1 (555) 123-4567<br>
                 💬 Live Chat: Available 24/7
             </div>

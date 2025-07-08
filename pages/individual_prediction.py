@@ -335,147 +335,147 @@ def show():
         'home_ownership': home_ownership,
         'employment_status': employment_status
     }
+    if st.button('Calculate Risk'):
+        # Calculate risk score
+        risk_score, contributions = calculator.calculate_risk_score(input_data)
+        risk_category = get_risk_category(risk_score)
 
-    # Calculate risk score
-    risk_score, contributions = calculator.calculate_risk_score(input_data)
-    risk_category = get_risk_category(risk_score)
+        # Real-time Results
+        st.markdown("---")
+        st.markdown("### 🎯 Risk Assessment Results")
 
-    # Real-time Results
-    st.markdown("---")
-    st.markdown("### 🎯 Risk Assessment Results")
+        # Risk Score Display
+        col_gauge, col_details = st.columns([1, 1])
 
-    # Risk Score Display
-    col_gauge, col_details = st.columns([1, 1])
+        with col_gauge:
+            # Risk gauge
+            fig_gauge = create_risk_gauge(risk_score)
+            st.plotly_chart(fig_gauge, use_container_width=True)
 
-    with col_gauge:
-        # Risk gauge
-        fig_gauge = create_risk_gauge(risk_score)
-        st.plotly_chart(fig_gauge, use_container_width=True)
-
-        # Risk category display
-        st.markdown(f"""
-        <div class="risk-display">
-            <div class="risk-label" style="color: {risk_category['color']}">
-                {risk_category['label']}
+            # Risk category display
+            st.markdown(f"""
+            <div class="risk-display">
+                <div class="risk-label" style="color: {risk_category['color']}">
+                    {risk_category['label']}
+                </div>
+                <div style="color: #B0B0B0; font-size: 1rem;">
+                    Risk Score: {risk_score:.1%}
+                </div>
             </div>
-            <div style="color: #B0B0B0; font-size: 1rem;">
-                Risk Score: {risk_score:.1%}
+            """, unsafe_allow_html=True)
+
+        with col_details:
+            # Feature importance chart
+            fig_importance = create_feature_importance_chart(contributions)
+            st.plotly_chart(fig_importance, use_container_width=True)
+
+        # Detailed Breakdown
+        st.markdown("### 📊 Risk Factor Breakdown")
+
+        col_breakdown1, col_breakdown2 = st.columns(2)
+
+        with col_breakdown1:
+            for i, (feature, contribution) in enumerate(list(contributions.items())[:3]):
+                st.markdown(f"""
+                <div class="breakdown-item">
+                    <span class="breakdown-feature">{feature}</span>
+                    <span class="breakdown-value">{contribution:.1%}</span>
+                </div>
+                """, unsafe_allow_html=True)
+
+        with col_breakdown2:
+            for feature, contribution in list(contributions.items())[3:]:
+                st.markdown(f"""
+                <div class="breakdown-item">
+                    <span class="breakdown-feature">{feature}</span>
+                    <span class="breakdown-value">{contribution:.1%}</span>
+                </div>
+                """, unsafe_allow_html=True)
+
+        # Recommendations
+        st.markdown("### 💡 Personalized Recommendations")
+        recommendations = generate_recommendations(input_data, risk_score)
+
+        for rec in recommendations:
+            st.markdown(f"""
+            <div class="recommendation-card">
+                {rec}
+            </div>
+            """, unsafe_allow_html=True)
+
+        # Decision Summary
+        st.markdown("### 📋 Decision Summary")
+
+        if risk_score <= 0.3:
+            decision = "✅ **APPROVED** - Excellent credit profile"
+            decision_color = THEME_CONFIG['success_color']
+        elif risk_score <= 0.6:
+            decision = "⚠️ **REVIEW REQUIRED** - Moderate risk detected"
+            decision_color = THEME_CONFIG['warning_color']
+        else:
+            decision = "❌ **HIGH RISK** - Additional documentation required"
+            decision_color = THEME_CONFIG['error_color']
+
+        st.markdown(f"""
+        <div style="background: rgba(30, 30, 30, 0.8); padding: 1.5rem; border-radius: 10px; 
+                    border-left: 4px solid {decision_color}; margin: 1rem 0;">
+            <div style="color: {decision_color}; font-size: 1.2rem; font-weight: 600;">
+                {decision}
+            </div>
+            <div style="color: #B0B0B0; margin-top: 0.5rem;">
+                Based on risk score of {risk_score:.1%} and current business rules
             </div>
         </div>
         """, unsafe_allow_html=True)
 
-    with col_details:
-        # Feature importance chart
-        fig_importance = create_feature_importance_chart(contributions)
-        st.plotly_chart(fig_importance, use_container_width=True)
+        # Export Functionality
+        st.markdown("### 📤 Export Results")
 
-    # Detailed Breakdown
-    st.markdown("### 📊 Risk Factor Breakdown")
+        col_export1, col_export2, col_export3 = st.columns(3)
 
-    col_breakdown1, col_breakdown2 = st.columns(2)
+        with col_export1:
+            if st.button("📄 Export to JSON", key="export_json"):
+                json_data = export_results(input_data, risk_score, contributions, recommendations)
+                st.download_button(
+                    label="Download JSON Report",
+                    data=json_data,
+                    file_name=f"credit_analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+                    mime="application/json"
+                )
 
-    with col_breakdown1:
-        for i, (feature, contribution) in enumerate(list(contributions.items())[:3]):
-            st.markdown(f"""
-            <div class="breakdown-item">
-                <span class="breakdown-feature">{feature}</span>
-                <span class="breakdown-value">{contribution:.1%}</span>
-            </div>
-            """, unsafe_allow_html=True)
+        with col_export2:
+            if st.button("📊 Export Summary", key="export_summary"):
+                summary = f"""
+    Credit Risk Analysis Summary
+    ===========================
+    Customer: {employment_status} | Age: {age}
+    Risk Score: {risk_score:.1%} ({risk_category['label']})
+    Decision: {decision.split('**')[1]}
 
-    with col_breakdown2:
-        for feature, contribution in list(contributions.items())[3:]:
-            st.markdown(f"""
-            <div class="breakdown-item">
-                <span class="breakdown-feature">{feature}</span>
-                <span class="breakdown-value">{contribution:.1%}</span>
-            </div>
-            """, unsafe_allow_html=True)
+    Key Factors:
+    {chr(10).join([f"• {k}: {v:.1%}" for k, v in contributions.items()])}
 
-    # Recommendations
-    st.markdown("### 💡 Personalized Recommendations")
-    recommendations = generate_recommendations(input_data, risk_score)
+    Recommendations:
+    {chr(10).join([f"• {rec}" for rec in recommendations])}
 
-    for rec in recommendations:
-        st.markdown(f"""
-        <div class="recommendation-card">
-            {rec}
-        </div>
-        """, unsafe_allow_html=True)
+    Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+                """
+                st.download_button(
+                    label="Download Summary",
+                    data=summary,
+                    file_name=f"credit_summary_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt",
+                    mime="text/plain"
+                )
 
-    # Decision Summary
-    st.markdown("### 📋 Decision Summary")
+        with col_export3:
+            if st.button("🔄 Reset Form", key="reset_form"):
+                st.experimental_rerun()
 
-    if risk_score <= 0.3:
-        decision = "✅ **APPROVED** - Excellent credit profile"
-        decision_color = THEME_CONFIG['success_color']
-    elif risk_score <= 0.6:
-        decision = "⚠️ **REVIEW REQUIRED** - Moderate risk detected"
-        decision_color = THEME_CONFIG['warning_color']
-    else:
-        decision = "❌ **HIGH RISK** - Additional documentation required"
-        decision_color = THEME_CONFIG['error_color']
-
-    st.markdown(f"""
-    <div style="background: rgba(30, 30, 30, 0.8); padding: 1.5rem; border-radius: 10px; 
-                border-left: 4px solid {decision_color}; margin: 1rem 0;">
-        <div style="color: {decision_color}; font-size: 1.2rem; font-weight: 600;">
-            {decision}
-        </div>
-        <div style="color: #B0B0B0; margin-top: 0.5rem;">
-            Based on risk score of {risk_score:.1%} and current business rules
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Export Functionality
-    st.markdown("### 📤 Export Results")
-
-    col_export1, col_export2, col_export3 = st.columns(3)
-
-    with col_export1:
-        if st.button("📄 Export to JSON", key="export_json"):
-            json_data = export_results(input_data, risk_score, contributions, recommendations)
-            st.download_button(
-                label="Download JSON Report",
-                data=json_data,
-                file_name=f"credit_analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
-                mime="application/json"
-            )
-
-    with col_export2:
-        if st.button("📊 Export Summary", key="export_summary"):
-            summary = f"""
-Credit Risk Analysis Summary
-===========================
-Customer: {employment_status} | Age: {age}
-Risk Score: {risk_score:.1%} ({risk_category['label']})
-Decision: {decision.split('**')[1]}
-
-Key Factors:
-{chr(10).join([f"• {k}: {v:.1%}" for k, v in contributions.items()])}
-
-Recommendations:
-{chr(10).join([f"• {rec}" for rec in recommendations])}
-
-Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-            """
-            st.download_button(
-                label="Download Summary",
-                data=summary,
-                file_name=f"credit_summary_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt",
-                mime="text/plain"
-            )
-
-    with col_export3:
-        if st.button("🔄 Reset Form", key="reset_form"):
-            st.experimental_rerun()
-
-    # Footer
-    st.markdown("---")
-    st.markdown(
-        f"<div style='text-align: center; color: #B0B0B0; font-size: 0.8rem;'>"
-        f"⚡ Analysis completed in real-time | Last updated: {datetime.now().strftime('%H:%M:%S')}"
-        f"</div>", 
-        unsafe_allow_html=True
-    )
+        # Footer
+        st.markdown("---")
+        st.markdown(
+            f"<div style='text-align: center; color: #B0B0B0; font-size: 0.8rem;'>"
+            f"⚡ Analysis completed in real-time | Last updated: {datetime.now().strftime('%H:%M:%S')}"
+            f"</div>", 
+            unsafe_allow_html=True
+        )
