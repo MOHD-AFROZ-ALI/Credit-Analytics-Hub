@@ -473,14 +473,18 @@ def show():
                 (results_df['risk_score'] <= risk_threshold[1])
             ]
 
+            # st.dataframe(
+            #     filtered_df.style.format({
+            #         'risk_score': '{:.1%}',
+            #         'annual_income': '${:,.0f}',
+            #         'loan_amount': '${:,.0f}',
+            #         'debt_to_income': '{:.1%}',
+            #         'credit_utilization': '{:.1%}'
+            #     }),
+            #     use_container_width=True
+            # )
             st.dataframe(
-                filtered_df.style.format({
-                    'risk_score': '{:.1%}',
-                    'annual_income': '${:,.0f}',
-                    'loan_amount': '${:,.0f}',
-                    'debt_to_income': '{:.1%}',
-                    'credit_utilization': '{:.1%}'
-                }),
+                filtered_df,
                 use_container_width=True
             )
 

@@ -145,7 +145,8 @@ def create_feature_importance_chart(contributions: Dict) -> go.Figure:
             color=values,
             colorscale='RdYlBu_r',
             showscale=True,
-            colorbar=dict(title="Risk Contribution (%)", titlefont=dict(color='white'))
+            # colorbar=dict(title="Risk Contribution (%)", titlefont=dict(color='white'))
+            colorbar=dict(title="Risk Contribution (%)", title=dict(font=dict(color='white')))
         ),
         text=[f'{v:.1f}%' for v in values],
         textposition='auto'

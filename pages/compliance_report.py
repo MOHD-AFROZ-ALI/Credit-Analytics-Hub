@@ -454,6 +454,16 @@ def show():
     st.markdown("---")
     st.markdown("### 📤 Export Compliance Documentation")
 
+    def convert_to_python_types(obj):
+        if isinstance(obj, dict):
+            return {k: convert_to_python_types(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [convert_to_python_types(i) for i in obj]
+        elif isinstance(obj, (np.bool_, np.integer, np.floating)):
+            return obj
+        else:
+            return obj
+
     export_col1, export_col2, export_col3 = st.columns(3)
 
     with export_col1:
@@ -510,7 +520,7 @@ Next Review Date: {(datetime.now() + timedelta(days=90)).strftime('%Y-%m-%d')}
             bias_report = {
                 'timestamp': datetime.now().isoformat(),
                 'overall_metrics': engine.bias_metrics,
-                'group_analysis': engine.calculate_bias_metrics(protected_groups),
+                'group_analysis': convert_to_python_types(engine.calculate_bias_metrics(protected_groups)),
                 'compliance_status': 'PASS' if all(v >= 0.90 for v in engine.bias_metrics.values()) else 'REVIEW_REQUIRED'
             }
 
