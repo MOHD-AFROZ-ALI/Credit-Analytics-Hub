@@ -32,7 +32,7 @@ except ImportError:
     # Fallback configuration
     APP_CONFIG = {
         'app_name': 'CreditAnalyticsHub',
-        'company_name': 'FinTech Solutions Inc.',
+        'company_name': 'FinTech Solutions',
         'version': '2.0.0'
     }
     THEME_CONFIG = {
@@ -379,7 +379,7 @@ def render_header():
     
     st.markdown(header_html, unsafe_allow_html=True)
 
-# Footer component
+# Footer components
 def render_footer():
     """Render the application footer"""
     footer_html = f"""
@@ -391,6 +391,7 @@ def render_footer():
             <p>🔒 Enterprise Security | 📊 Real-time Analytics | 🤖 AI-Powered Predictions</p>
         </div>
     </div>
+
     """
     
     st.markdown(footer_html, unsafe_allow_html=True)
@@ -495,7 +496,7 @@ def main():
             <div class="card-content">
                 If you continue to experience issues, please contact our technical support team:
                 <br><br>
-                📧 Email: support@fintechsolutions.com<br>
+                📧 Email: fintechsolutions.com<br>
                 📞 Phone: +1 (555) 123-4567<br>
                 💬 Live Chat: Available 24/7
             </div>

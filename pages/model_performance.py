@@ -498,6 +498,7 @@ def show():
                     'timestamp': datetime.now().isoformat(),
                     'performance': performance_data.get(model_to_save, {})
                 }
+                joblib.dump(trainer.trained_models[model_to_save], f"{model_to_save}_{version_name}.joblib")
 
                 st.success(f"✅ Model {model_to_save} saved as {version_name}")
                 st.json(model_info)

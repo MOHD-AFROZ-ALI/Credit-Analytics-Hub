@@ -402,7 +402,12 @@ def show():
         with col_sample2:
             if st.button("🔍 Explain Prediction"):
                 # Get prediction
-                prediction = explainer.model.predict_proba(sample_data)[0, 1]
+                # prediction = explainer.model.predict_proba(sample_data)[0, 1]
+                proba = explainer.model.predict_proba(sample_data)
+                if proba.shape[1] == 2:
+                    prediction = proba[0, 1]
+                else:
+                    prediction = proba[0, 0] 
 
                 # Get SHAP values
                 shap_values = explainer.get_shap_values(sample_data)[0]

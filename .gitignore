@@ -49,3 +49,7 @@ coverage.xml
 env/
 venv/
 ENV/
+
+
+*.py[cod]
+*.pyc
