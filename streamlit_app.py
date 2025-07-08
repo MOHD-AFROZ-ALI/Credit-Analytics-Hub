@@ -372,7 +372,7 @@ def render_header():
                 <h1>🏦 {APP_CONFIG['app_name']}</h1>
                 <p>Advanced Credit Risk Analytics Platform | {APP_CONFIG['company_name']} | v{APP_CONFIG['version']}</p>
             </div>
-            {system_status_html}
+            {system_status_html} 
         </div>
     </div>
     """
@@ -385,7 +385,7 @@ def render_footer():
     footer_html = f"""
     <div class="custom-footer">
         <div class="footer-content">
-            <p>© 2024 <span class="footer-brand">{APP_CONFIG['company_name']}</span> | 
+            <p>© 2025 <span class="footer-brand">{APP_CONFIG['company_name']}</span> | 
             Powered by <span class="footer-brand">{APP_CONFIG['app_name']}</span> | 
             Advanced Credit Risk Analytics & AI-Driven Insights</p>
             <p>🔒 Enterprise Security | 📊 Real-time Analytics | 🤖 AI-Powered Predictions</p>

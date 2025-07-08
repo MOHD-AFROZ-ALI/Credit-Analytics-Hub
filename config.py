@@ -13,7 +13,7 @@ import os
 
 APP_CONFIG = {
     'app_name': 'CreditAnalyticsHub',
-    'company_name': 'FinTech Solutions Inc.',
+    'company_name': 'FinTech Solutions',
     'version': '2.0.0',
     'environment': os.getenv('ENVIRONMENT', 'development'),
     'debug_mode': os.getenv('DEBUG', 'False').lower() == 'true',
