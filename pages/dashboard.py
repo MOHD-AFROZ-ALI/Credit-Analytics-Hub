@@ -388,6 +388,25 @@ def show():
     # Header
     st.markdown("## 📊 System Dashboard")
     st.markdown("Real-time overview of your credit risk analytics platform")
+    st.markdown("""
+    <div style="background-color:#1E1E1E; padding: 1.5rem; border-radius: 15px; border: 1px solid #333; margin-bottom: 2rem;">
+        <p style="color:#B0B0B0; font-size:1.1rem;">
+            CreditAnalyticsHub is a cutting-edge platform designed to empower financial institutions with advanced credit risk analytics.
+            Leveraging AI-driven models and comprehensive data insights, it enables accurate risk assessment, compliance monitoring, and strategic decision-making.
+        </p>
+        <h3 style="color:#00D4FF;">Why Choose CreditAnalyticsHub?</h3>
+        <ul style="color:#B0B0B0; font-size:1rem; list-style:none; padding-left: 0;">
+            <li>✅ <strong>Accurate Risk Scoring:</strong> Real-time individual and batch credit risk predictions.</li>
+            <li>🔍 <strong>Explainability:</strong> Transparent AI models with SHAP explainability for trust and compliance.</li>
+            <li>📊 <strong>Business Intelligence:</strong> Actionable insights and KPIs to drive portfolio growth and profitability.</li>
+            <li>⚖️ <strong>Regulatory Compliance:</strong> Automated compliance reporting and bias detection.</li>
+            <li>🚀 <strong>Scalable & User-Friendly:</strong> Intuitive interface with quick access to all key features.</li>
+        </ul>
+        <p style="color:#B0B0B0; font-size:1rem;">
+            Use the tabs and quick access cards to explore the platform’s powerful capabilities and enhance your credit risk management.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
     # System Status Row
     st.markdown("### 🔄 System Status")
